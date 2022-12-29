@@ -1,0 +1,792 @@
+{
+	"info": {
+		"_postman_id": "d77ec589-639d-4d9d-b982-aeaaa588d8b1",
+		"name": "Bouncebox",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18737615"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "users/register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "ajaysingh1234@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "firstName",
+									"value": "ajay",
+									"type": "text"
+								},
+								{
+									"key": "lastName",
+									"value": "singh",
+									"type": "text"
+								},
+								{
+									"key": "artistName",
+									"value": "ajay",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123ewq",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/Users/ajaysingh/Downloads/Screenshot 2022-09-19 at 10.27.42 PM (2).png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{main}}/api/users/register",
+							"host": [
+								"{{main}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "users/login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"test3@gmail.com\",\n        \"password\": \"test123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{main}}/api/users/login",
+							"host": [
+								"{{main}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "users/get",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmE3OGUxMWNiN2FiOGQ2NGY2NzZkMGIiLCJJc0FkbWluIjpmYWxzZSwiaWF0IjoxNjU1MTQ4MDU2fQ.q4tCBE6VmP8djGYDAEYn6PgsnxIm97zDil-cKANDidQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{main}}/api/users/get",
+							"host": [
+								"{{main}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"get"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Update",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmE3OGUxMWNiN2FiOGQ2NGY2NzZkMGIiLCJJc0FkbWluIjpmYWxzZSwiaWF0IjoxNjU1MTQ4MDU2fQ.q4tCBE6VmP8djGYDAEYn6PgsnxIm97zDil-cKANDidQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{main}}/api/users/update",
+							"host": [
+								"{{main}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "users/delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmE3OTMzZTU3NzcyYWJjMTQ1NjQxZDQiLCJJc0FkbWluIjpmYWxzZSwiaWF0IjoxNjU1MTQ5Mzc2fQ.STedNbuIrEJgpnWxUjprCwTapaM-689oj46Ruq6hS54",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{main}}/api/users/delete",
+							"host": [
+								"{{main}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "sendCollaboratorRequest",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmRhZDZmYTJhODg3YWY3ZWE5MGYyZDEiLCJJc0FkbWluIjpmYWxzZSwiaWF0IjoxNjU4NTA5MjE5fQ.i2LPd3mQdJlOcpgOZ_LkMum8TwXlELoskP7F9Y-0Yqo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"receiver_email\": \"test3@gmail.com\",\n        \"project_id\": \"62dad7c22a887af7ea90f2f9\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{main}}/api/users/sendCollaboratorRequest",
+							"host": [
+								"{{main}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"sendCollaboratorRequest"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllSentRequests",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmRhZDZmYTJhODg3YWY3ZWE5MGYyZDEiLCJJc0FkbWluIjpmYWxzZSwiaWF0IjoxNjU4NTA5MjE5fQ.i2LPd3mQdJlOcpgOZ_LkMum8TwXlELoskP7F9Y-0Yqo",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{main}}/api/users/getAllSentRequests",
+							"host": [
+								"{{main}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"getAllSentRequests"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllReceivedRequests",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmRhZDcxNTJhODg3YWY3ZWE5MGYyZDciLCJJc0FkbWluIjpmYWxzZSwiaWF0IjoxNjU4NTA5ODk2fQ.Qm4mK5nnXWXKB7a2LfR4jYB2Vzn0fs3RVWtRO44I7_s",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{main}}/api/users/getAllReceivedRequests",
+							"host": [
+								"{{main}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"getAllReceivedRequests"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "acceptRequest",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmRhZDcxNTJhODg3YWY3ZWE5MGYyZDciLCJJc0FkbWluIjpmYWxzZSwiaWF0IjoxNjU4NTA5ODk2fQ.Qm4mK5nnXWXKB7a2LfR4jYB2Vzn0fs3RVWtRO44I7_s",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{main}}/api/users/acceptRequest/62dad944c31de5bf21f63f5a",
+							"host": [
+								"{{main}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"acceptRequest",
+								"62dad944c31de5bf21f63f5a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "rejectRequest",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmRhZDcxNTJhODg3YWY3ZWE5MGYyZDciLCJJc0FkbWluIjpmYWxzZSwiaWF0IjoxNjU4NTA5ODk2fQ.Qm4mK5nnXWXKB7a2LfR4jYB2Vzn0fs3RVWtRO44I7_s",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{main}}/api/users/rejectRequest/62dadc559cc357615adb23d7",
+							"host": [
+								"{{main}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"rejectRequest",
+								"62dadc559cc357615adb23d7"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Project",
+			"item": [
+				{
+					"name": "projects/Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzM5Mzg2MWNkMTE3MzVkMjhiNDJlZmYiLCJJc0FkbWluIjpmYWxzZSwiaWF0IjoxNjY0Njk0NDcxfQ.XrSOkL4e_2CcZ9yb1eQGibUauwNkmtmneUcyIQntPRA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "projectName",
+									"value": "Test1Proj2",
+									"type": "text"
+								},
+								{
+									"key": "artWork",
+									"type": "file",
+									"src": "/Users/ajaysingh/Downloads/Ajay_Singh_Taknet_9829561803 (1).pdf",
+									"disabled": true
+								},
+								{
+									"key": "artistName",
+									"value": "Ajay",
+									"type": "text"
+								},
+								{
+									"key": "bounces",
+									"type": "file",
+									"src": [],
+									"disabled": true
+								},
+								{
+									"key": "samples",
+									"type": "file",
+									"src": [],
+									"disabled": true
+								},
+								{
+									"key": "tags",
+									"value": "{name : \"test\", colour : \"green\"}",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "description",
+									"value": "test project for test1 account proj1",
+									"type": "text"
+								},
+								{
+									"key": "tags",
+									"value": "{name : \"test2\", colour : \"blue\"}",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "tags",
+									"value": "{name : \"test3\", colour : \"rad\"}",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{main}}/api/projects/Create",
+							"host": [
+								"{{main}}"
+							],
+							"path": [
+								"api",
+								"projects",
+								"Create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "projects/GetAll",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmE3OWU1YjcxMDcyZmQ3MGYwOGZkM2YiLCJJc0FkbWluIjpmYWxzZSwiaWF0IjoxNjU1MTUyMjIyfQ.XUS6A4yU93PKsf55huStNxYS044espdd2_blw3QIQNk",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{main}}/api/projects/GetAll",
+							"host": [
+								"{{main}}"
+							],
+							"path": [
+								"api",
+								"projects",
+								"GetAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get/:Id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmE3OWU1YjcxMDcyZmQ3MGYwOGZkM2YiLCJJc0FkbWluIjpmYWxzZSwiaWF0IjoxNjU1MTUyMjIyfQ.XUS6A4yU93PKsf55huStNxYS044espdd2_blw3QIQNk",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{main}}/api/projects/Get/62a7a5fe9f99e14635c0b405",
+							"host": [
+								"{{main}}"
+							],
+							"path": [
+								"api",
+								"projects",
+								"Get",
+								"62a7a5fe9f99e14635c0b405"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "projects/Update/:id",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmRhZDZmYTJhODg3YWY3ZWE5MGYyZDEiLCJJc0FkbWluIjpmYWxzZSwiaWF0IjoxNjU4NTA5MjE5fQ.i2LPd3mQdJlOcpgOZ_LkMum8TwXlELoskP7F9Y-0Yqo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"tags\": \"test_tag\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{main}}/api/projects/Update/62dad7c72a887af7ea90f2fd",
+							"host": [
+								"{{main}}"
+							],
+							"path": [
+								"api",
+								"projects",
+								"Update",
+								"62dad7c72a887af7ea90f2fd"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "projects/Delete/:id",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmE3OWU1YjcxMDcyZmQ3MGYwOGZkM2YiLCJJc0FkbWluIjpmYWxzZSwiaWF0IjoxNjU1MTUyMjIyfQ.XUS6A4yU93PKsf55huStNxYS044espdd2_blw3QIQNk",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{main}}/api/projects/Delete/62a7a5fe9f99e14635c0b405",
+							"host": [
+								"{{main}}"
+							],
+							"path": [
+								"api",
+								"projects",
+								"Delete",
+								"62a7a5fe9f99e14635c0b405"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteCollaborator/projid/colid",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{main}}/api/projects/DeleteCollaborator/",
+							"host": [
+								"{{main}}"
+							],
+							"path": [
+								"api",
+								"projects",
+								"DeleteCollaborator",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateProjectTags",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzM5Mzg5OWNkMTE3MzVkMjhiNDJmMDIiLCJJc0FkbWluIjpmYWxzZSwiaWF0IjoxNjY0Njk0ODI5fQ.8xXZXak5e0PsAFiyJF0p8yewUQnH1KTqyLLsgIhwbYo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"tags\" : [\n        {\n            \"name\" : \"test2\",\n            \"colour\" : \"red\"\n        },\n        {\n            \"name\" : \"test42\",\n            \"colour\" : \"blue\"\n        },\n        {\n            \"name\" : \"test2\",\n            \"colour\" : \"green\"\n        },\n        {\n            \"name\" : \"test3\",\n            \"colour\" : \"sky\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{main}}/api/projects/tags/6339391dcd11735d28b42f0a",
+							"host": [
+								"{{main}}"
+							],
+							"path": [
+								"api",
+								"projects",
+								"tags",
+								"6339391dcd11735d28b42f0a"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Version",
+			"item": [
+				{
+					"name": "versions/Create/:id",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzM5Mzg2MWNkMTE3MzVkMjhiNDJlZmYiLCJJc0FkbWluIjpmYWxzZSwiaWF0IjoxNjY0Njk0ODk5fQ.sH2BwKXbKiWroyUU5fSoH4NiSfe7ZwgcGp_vVFf5PG0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "comments",
+									"value": "test version for project 1 user 1 version2 ",
+									"type": "text"
+								},
+								{
+									"key": "previousVersion_id",
+									"value": "63393926cd11735d28b42f0c",
+									"type": "text"
+								},
+								{
+									"key": "versionName",
+									"value": "Test1Proj1 V2",
+									"type": "text"
+								},
+								{
+									"key": "bounces",
+									"type": "file",
+									"src": [
+										"/Users/ajaysingh/Downloads/Ajay_Singh_Taknet_9829561803 (1).pdf",
+										"/Users/ajaysingh/Downloads/AjaySinghTaknetResume (2).pdf",
+										"/Users/ajaysingh/Downloads/FSal3iJ8v9u.txt"
+									]
+								},
+								{
+									"key": "samples",
+									"type": "file",
+									"src": [
+										"/Users/ajaysingh/Downloads/AD.cpp",
+										"/Users/ajaysingh/Downloads/Ajay_Singh_Taknet_9829561803.pdf",
+										"/Users/ajaysingh/Downloads/Driver.cpp"
+									]
+								}
+							]
+						},
+						"url": {
+							"raw": "{{main}}/api/versions/Create/6339391dcd11735d28b42f0a",
+							"host": [
+								"{{main}}"
+							],
+							"path": [
+								"api",
+								"versions",
+								"Create",
+								"6339391dcd11735d28b42f0a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "versions/GetAll/:id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmE3OWU1YjcxMDcyZmQ3MGYwOGZkM2YiLCJJc0FkbWluIjpmYWxzZSwiaWF0IjoxNjU1MTUyMjIyfQ.XUS6A4yU93PKsf55huStNxYS044espdd2_blw3QIQNk",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{main}}/api/versions/GetAll/62a7b09bf2a6e2b87390edfe",
+							"host": [
+								"{{main}}"
+							],
+							"path": [
+								"api",
+								"versions",
+								"GetAll",
+								"62a7b09bf2a6e2b87390edfe"
+							],
+							"query": [
+								{
+									"key": "x-access-token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmE3OWU1YjcxMDcyZmQ3MGYwOGZkM2YiLCJJc0FkbWluIjpmYWxzZSwiaWF0IjoxNjU1MTUyMjIyfQ.XUS6A4yU93PKsf55huStNxYS044espdd2_blw3QIQNk",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "versions/Get/projid/verid",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmE3OWU1YjcxMDcyZmQ3MGYwOGZkM2YiLCJJc0FkbWluIjpmYWxzZSwiaWF0IjoxNjU1MTUyMjIyfQ.XUS6A4yU93PKsf55huStNxYS044espdd2_blw3QIQNk",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{main}}/api/versions/Get/62a7b09bf2a6e2b87390edfe/62a8202a034c80618165fdc7",
+							"host": [
+								"{{main}}"
+							],
+							"path": [
+								"api",
+								"versions",
+								"Get",
+								"62a7b09bf2a6e2b87390edfe",
+								"62a8202a034c80618165fdc7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "versions/Delete/projId/verid",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmE3OWU1YjcxMDcyZmQ3MGYwOGZkM2YiLCJJc0FkbWluIjpmYWxzZSwiaWF0IjoxNjU1MTUyMjIyfQ.XUS6A4yU93PKsf55huStNxYS044espdd2_blw3QIQNk",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{main}}/api/versions/Delete/62a7b09bf2a6e2b87390edfe/62a82ae50e9079c9dc58c69a",
+							"host": [
+								"{{main}}"
+							],
+							"path": [
+								"api",
+								"versions",
+								"Delete",
+								"62a7b09bf2a6e2b87390edfe",
+								"62a82ae50e9079c9dc58c69a"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Download File",
+			"item": [
+				{
+					"name": "Download",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzM5Mzg2MWNkMTE3MzVkMjhiNDJlZmYiLCJJc0FkbWluIjpmYWxzZSwiaWF0IjoxNjY0Njk0NDcxfQ.XrSOkL4e_2CcZ9yb1eQGibUauwNkmtmneUcyIQntPRA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"key\" : \"6373b68d550de0b8a4802e6d/Ajay123dsa v1/samples/samples/.DS_Store\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{main}}/api/projects/Download",
+							"host": [
+								"{{main}}"
+							],
+							"path": [
+								"api",
+								"projects",
+								"Download"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "main",
+			"value": "http://18.223.131.20:8080",
+			"type": "string"
+		}
+	]
+}

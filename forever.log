@@ -1,0 +1,29 @@
+(node:78890) Warning: Accessing non-existent property 'padLevels' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+MongoDB connecting mongodb://localhost:27017/BounceBox {
+  dbName: 'BounceBox',
+  user: '',
+  pass: '',
+  useNewUrlParser: true,
+  serverSelectionTimeoutMS: 5000,
+  heartbeatFrequencyMS: 5000
+}
+Server is running on port 8080
+Server is running on ip 192.168.1.103
+MongoDB connected
+[Object: null prototype] {
+  email: 'ajaysingh1234@gmail.com',
+  firstName: 'ajay',
+  lastName: 'singh',
+  artistName: 'ajay',
+  password: '123ewq'
+}
+[Object: null prototype] {
+  email: 'ajaysingh1234@gmail.com',
+  firstName: 'ajay',
+  lastName: 'singh',
+  artistName: 'ajay',
+  password: '123ewq'
+}
+uploadImage
+{"level":"error","message":"Forever detected script was killed by signal: SIGKILL"}

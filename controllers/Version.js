@@ -2,6 +2,7 @@ const Version = require("../models/Version");
 const Utils = require("../utils/utils");
 const Project = require("../models/Project");
 const Projectvalidator = require("../routes/validators/Projectvalidator");
+const logger = require("../logger");
 
 //createVersion
 async function createVersion(req, res) {
@@ -35,6 +36,8 @@ async function createVersion(req, res) {
       res.json({ message: "Version not created" });
     }
   } catch (error) {
+    logger.error("Error in createVersion");
+    logger.error(error);
     res.json(error);
   }
 }
@@ -49,6 +52,8 @@ async function getAllVersions(req, res) {
       res.status(400).send({ message: "No versions found" });
     }
   } catch (error) {
+    logger.error("Error in getAllVersions");
+    logger.error(error);
     res.json(error);
   }
 }
@@ -66,6 +71,8 @@ async function getVersionById(req, res) {
       res.status(400).send({ message: "No version found" });
     }
   } catch (error) {
+    logger.error("Error in getVersionById");
+    logger.error(error);
     res.json(error);
   }
 }
@@ -109,6 +116,8 @@ async function deleteVersionById(req, res) {
       res.status(400).send({ message: "Project not Founded"});
     }
   } catch (error) {
+    logger.error("Error in deleteVersionById");
+    logger.error(error);
     res.json(error);
   }
 }

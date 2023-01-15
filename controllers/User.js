@@ -3,6 +3,7 @@ const bcrypt = require("bcrypt");
 const Project = require("../models/Project");
 const Request = require("../models/Request");
 const { uploadImage, deleteFile } = require("../utils/utils");
+const logger = require("../logger");
 
 //rgister user in the database and return the user
 async function register(req, res) {
@@ -22,8 +23,9 @@ async function register(req, res) {
 
     res.send(user);
   } catch (error) {
+    logger.error("Error While Registering User");
+    logger.error(error);
     res.json(error);
-    ``;
   }
 }
 // login user and return the user use async/await
@@ -38,6 +40,8 @@ async function login(req, res) {
       res.status(400).send({ message: "Invalid email or password" });
     }
   } catch (error) {
+    logger.error("Error While Logging In User");
+    logger.error(error);
     res.json(error);
   }
 }
@@ -53,6 +57,8 @@ async function getUser(req, res) {
       res.status(404).send({ message: "User not found" });
     }
   } catch (error) {
+    logger.error("Error While Getting User");
+    logger.error(error);
     res.json(error);
   }
 }
@@ -89,6 +95,8 @@ async function updateUser(req, res) {
       res.status(404).send({ message: "User not found" });
     }
   } catch (error) {
+    logger.error("Error While Updating User");
+    logger.error(error);
     res.json(error);
   }
 }
@@ -107,6 +115,8 @@ async function deleteUser(req, res) {
       res.status(404).send({ message: "User not found" });
     }
   } catch (error) {
+    logger.error("Error While Deleting User");
+    logger.error(error);
     res.json(error);
   }
 }
@@ -124,6 +134,8 @@ async function sendCollaboratorRequest(req, res) {
     }
     res.send(data);
   } catch (error) {
+    logger.error("Error While Sending Collaborator Request");
+    logger.error(error);
     res.json(error);
   }
 }
@@ -151,6 +163,8 @@ async function getAllSentRequests(req, res) {
       res.status(404).send({ message: "Requests not found" });
     }
   } catch (error) {
+    logger.error("Error While Getting All Sent Requests");
+    logger.error(error);
     res.json(error);
   }
 }
@@ -179,6 +193,8 @@ async function getAllReceivedRequests(req, res) {
       res.status(404).send({ message: "Requests not found" });
     }
   } catch (error) {
+    logger.error("Error While Getting All Received Requests");
+    logger.error(error);
     res.json(error);
   }
 }
@@ -207,6 +223,8 @@ async function acceptRequest(req, res) {
       }
     }
   } catch (error) {
+    logger.error("Error While Accepting Request");
+    logger.error(error);
     res.json(error);
   }
 }
@@ -228,6 +246,8 @@ async function rejectRequest(req, res) {
       res.status(404).send({ message: "Request not found" });
     }
   } catch (error) {
+    logger.error("Error While Rejecting Request");
+    logger.error(error);
     res.json(error);
   }
 }

@@ -1,6 +1,7 @@
 const Project = require("../models/Project");
 const { User } = require("../models/User");
-const {createVersion,downloadFile } = require("../utils/utils");
+const { createVersion, downloadFile } = require("../utils/utils");
+const logger = require("../logger");
 
 //create a new project
 async function createProject(req, res) {
@@ -8,15 +9,13 @@ async function createProject(req, res) {
   const projectData = req.body;
 
   try {
- 
-
     //create a new project
     const project = await Project.create({
       projectName: projectData.projectName,
-      artWork: projectData.artWork[0].data,
+      artWork: projectData.artWork,
       user_id: user_id,
       collaborators: [],
-      artistName : projectData.artistName,
+      artistName: projectData.artistName,
       project_comment: projectData.description,
       tags: projectData.tags,
     });
@@ -27,14 +26,13 @@ async function createProject(req, res) {
       project_id: project._id,
       user_id: user_id,
       versionName: versionName,
-      artistName : projectData.artistName,
+      artistName: projectData.artistName,
       artistImage: req.artistImage,
       versionComment: "Initial version",
       samples: projectData.samples,
       previousVersion_id: null,
     };
     const version = await createVersion(data);
-
 
     //update the project with the version id
     const projectWithVersion = await Project.findByIdAndUpdate(
@@ -61,26 +59,13 @@ async function createProject(req, res) {
     );
 
     res.json({ message: "Project created", project, version });
-
-
-
-   
-  
   } catch (error) {
-    console.log(error);
+    logger.error("Error While Creating Project");
+    logger.error(error);
     res.status(500).json({
       message: "Something went wrong",
     });
   }
-
-
-
-  
-
-  
-
-
- 
 }
 
 // getAllProjects
@@ -104,9 +89,11 @@ async function getAllProjects(req, res) {
       }
       projects[i].collaborators = collaborators;
     }
-    
+
     res.send(projects);
   } catch (error) {
+    logger.error("Error While Getting All Projects");
+    logger.error(error);
     res.json(error);
   }
 }
@@ -116,7 +103,7 @@ async function getProjectById(req, res) {
   let user_id = req.userId;
   let project_id = req.params.id;
   try {
-    // in proeject.collaborators we have the id of the collaborators of the project so we need to get the details of the collaborators from the user model 
+    // in proeject.collaborators we have the id of the collaborators of the project so we need to get the details of the collaborators from the user model
     const project = await Project.findById(project_id);
     if (project) {
       //for each collaborator in the project we get the details from the user model
@@ -132,6 +119,8 @@ async function getProjectById(req, res) {
       res.status(404).send({ message: "Project not found" });
     }
   } catch (error) {
+    logger.error("Error While Getting Project By Id");
+    logger.error(error);
     res.json(error);
   }
 }
@@ -153,6 +142,8 @@ async function updateProjectById(req, res) {
       res.status(404).send({ message: "Project not found" });
     }
   } catch (error) {
+    logger.error("Error While Updating Project By Id");
+    logger.error(error);
     res.json(error);
   }
 }
@@ -179,6 +170,8 @@ async function deleteProjectById(req, res) {
       res.status(404).send({ message: "Project not found" });
     }
   } catch (error) {
+    logger.error("Error While Deleting Project By Id");
+    logger.error(error);
     res.json(error);
   }
 }
@@ -225,6 +218,8 @@ async function sendCollaboratorRequest(req, res) {
       res.status(404).send({ message: "User not found" });
     }
   } catch (error) {
+    logger.error("Error While Sending Collaborator Request");
+    logger.error(error);
     res.json(error);
   }
 }
@@ -252,6 +247,8 @@ async function deleteCollaborator(req, res) {
       res.status(404).send({ message: "Project not found" });
     }
   } catch (error) {
+    logger.error("Error While Deleting Collaborator");
+    logger.error(error);
     res.json(error);
   }
 }
@@ -277,37 +274,30 @@ async function updateProjectTags(req, res) {
     } else {
       res.status(404).send({ message: "Project not found" });
     }
-  }
-
-
-  catch (error) {
+  } catch (error) {
+    logger.error("Error While Updating Project Tags");
+    logger.error(error);
     res.json(error);
   }
-
-
-
-
 }
 
 // downloadProjectFiles
 async function downloadProjectFiles(req, res) {
   let user_id = req.userId;
   //check if user provided key of file to download
-  if(!req.body.key){
-    res.status(400).send({message: "Please provide key of file to download"})
+  if (!req.body.key) {
+    res.status(400).send({ message: "Please provide key of file to download" });
   }
   let key = req.body.key;
   try {
-   let file =  await downloadFile(key);
+    let file = await downloadFile(key);
     file.pipe(res);
   } catch (error) {
+    logger.error("Error While Downloading Project Files");
+    logger.error(error);
     res.json(error);
   }
 }
-
-
-
-
 
 module.exports = {
   createProject,

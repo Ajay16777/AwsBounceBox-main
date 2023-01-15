@@ -1,5 +1,6 @@
 const mongooes = require('mongoose');
 const config = require('./config');
+const logger = require('./logger');
 
 const options = {
     dbName: config.MONGO_DB_SCHEMA,
@@ -16,15 +17,15 @@ const retryCounter = 0;
 const RETRY_LIMIT = 5;
 
 const mongoConnect = () => {
-    console.log('MongoDB connecting', uri, options);
+    logger.info('MongoDB connection attempt');
     mongooes.set('strictQuery', false);
     mongooes.connect(uri, options)
     .then(() => {
-        console.log('MongoDB connected');
+        logger.info('MongoDB connected');
     })
     .catch((err) => {
-        console.log('MongoDB connection error', err);
-       
+        logger.error('MongoDB connection error');
+        logger.error(err);
     });
        
 }
@@ -33,12 +34,12 @@ const connectDB = () => {
     mongoConnect();
 
     mongooes.connection.on('disconnected', () => {
-        console.log('MongoDB disconnected');
+        logger.info('MongoDB disconnected');
         if (retryCounter < RETRY_LIMIT) {
             mongoConnect();
         }
         else {
-            console.log('MongoDB Max retry limit reached');
+            logger.error('MongoDB connection failed after retry limit');
         }
     }
     );

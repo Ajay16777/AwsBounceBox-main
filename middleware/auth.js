@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const { User } = require("../models/User");
+const logger = require('../logger');
 
 function verifyToken(req, res, next) {
   console.log("verifyToken");

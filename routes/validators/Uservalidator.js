@@ -2,6 +2,7 @@ const validator = require("validator");
 const { User } = require("../../models/User");
 const Project = require("../../models/Project");
 const Request = require("../../models/Request");
+const logger = require("../../logger");
 
 async function register(req, res, next) {
   try {
@@ -39,6 +40,8 @@ async function register(req, res, next) {
 
     next();
   } catch (error) {
+    logger.error("Error While Verifying User Data");
+    logger.error(error);
     res.json(error);
   }
 }
@@ -56,6 +59,8 @@ async function login(req, res, next) {
 
     next();
   } catch (error) {
+    logger.error("Error While Verifying User Data");
+    logger.error(error);
     res.json(error);
   }
 }
@@ -97,6 +102,8 @@ async function sendCollaboratorRequest(req, res, next) {
 
     next();
   } catch (error) {
+    logger.error("Error While Verifying User Data");
+    logger.error(error);
     res.json(error);
   }
 
@@ -117,6 +124,8 @@ async function acceptRequest(req, res, next) {
       }
     }
   } catch (error) {
+    logger.error("Error While Verifying Accept Request Data");
+    logger.error(error);
     res.json(error);
   }
 }
@@ -136,6 +145,8 @@ async function rejectRequest(req, res, next) {
       }
     }
   } catch (error) {
+    logger.error("Error While Verifying Reject Request Data");
+    logger.error(error);
     res.json(error);
   }
 }

@@ -4,6 +4,7 @@ const aws = require("aws-sdk");
 const fs = require("fs");
 const Version = require("../models/Version");
 const { match } = require("assert");
+const logger = require("../logger");
 
 
 aws.config.update({
@@ -32,7 +33,8 @@ async function uploadFile(file, dir) {
     let data = await s3.upload(params).promise();
     return data;
   } catch (error) {
-    console.log(error);
+    logger.error("Error uploading file to s3");
+    logger.error(error);
   }
 }
 
@@ -54,7 +56,7 @@ async function uploadFiles(files, dir1, key) {
 //delete folder form s3
 async function deleteFolder(dir) {
   try {
-    console.log(dir);
+    logger.info("deleteFolder");
     //  listObjectsV2
     let params = {
       Bucket: bucket,
@@ -78,13 +80,14 @@ async function deleteFolder(dir) {
     let data1 = await s3.deleteObjects(deleteParams).promise();
     return data1;
   } catch (error) {
-    console.log(error);
+    logger.error("Error deleting folder");
+    logger.error(error);
   }
 }
 
 
 async function uploadImage(file, dir) {
-  console.log("uploadImage");
+  logger.info("uploadImage");
   try {
    let Image_buffer = file.data;
     
@@ -107,7 +110,8 @@ async function uploadImage(file, dir) {
     
   }
   catch (error) {
-    console.log(error);
+    logger.error("Error uploading image to s3");
+    logger.error(error);
   }
 
 }
@@ -122,13 +126,14 @@ async function deleteFile(key) {
     let data = await s3.deleteObject(params).promise();
     return data;
   } catch (error) {
-    console.log(error);
+    logger.error("Error deleting file");
+    logger.error(error);
   }
 }
 
 //download file from s3
 async function downloadFile(key) {
-  console.log("downloadFile");
+ logger.info("downloadFile");
   console.log(key);
   try {
     let params = {
@@ -138,7 +143,8 @@ async function downloadFile(key) {
     let data = await s3.getObject(params).createReadStream();
     return data;
   } catch (error) {
-    console.log(error);
+    logger.error("Error downloading file");
+    logger.error(error);
   }
 }
 
@@ -161,7 +167,7 @@ async function createVersion(data) {
     uploadSamples.push(data2);
   }
 
-  console.log("all files uploaded");
+ logger.info("uploadSamples");
  
 //create the version
   let version = new Version({
@@ -177,7 +183,8 @@ async function createVersion(data) {
   return versionData;
 
   } catch (error) {
-    console.log(error);
+    logger.error("Error creating version");
+    logger.error(error);
   }
 }
 

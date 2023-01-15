@@ -1,11 +1,10 @@
+const logger = require("../../logger");
 const Project = require("../../models/Project");
 const { User } = require("../../models/User");
-const multiparty = require("multiparty");
-
 //create a new project
 async function createProject(req, res, next) {
   const projectData = req.body;
-  console.log("project data", projectData);
+  logger.info("createProject");
   try {
     if (
       !projectData.projectName ||
@@ -44,6 +43,8 @@ async function createProject(req, res, next) {
     req.artistImage = user.Image;
     next();
   } catch (error) {
+    logger.error("Error While Verifying Project Data");
+    logger.error(error);
     res.json(error);
   }
 }
@@ -71,13 +72,15 @@ async function verifyProjectAccess(req, res, next) {
       res.status(404).send({ message: "Project not found" });
     }
   } catch (error) {
+    logger.error("Error While verifying project access");
+    logger.error(error);
     res.json(error);
   }
 }
 
 //version create
 async function createVersion(req, res, next) {
-  console.log("create version");
+  logger.info("createVersion");
   const versionData = req.body;
   let project_id = req.params.id;
   if(req.params.id === undefined){
@@ -135,6 +138,8 @@ async function createVersion(req, res, next) {
       }
     }
   } catch (error) {
+    logger.error("Error While Verifying Version Data");
+    logger.error(error);
     res.json(error);
   }
 }
@@ -154,12 +159,15 @@ async function checkOwner(req, res, next) {
       res.status(404).send({ message: "Project not found" });
     }
   } catch (error) {
+    logger.error("Error While verifying project access");
+    logger.error(error);
     res.json(error);
   }
 }
 
 //project update validator
 async function updateProject(req, res, next) {
+try {
   const projectData = req.body;
   //if user is send anythig other than this fields, it will be ignored
   const allowedFields = ["projectName", "artWork", "artistName", "description"];
@@ -172,6 +180,12 @@ async function updateProject(req, res, next) {
     return res.status(400).send({ message: "Invalid updates" });
   }
   next();
+} catch (error) {
+  logger.error("Error While updating project");
+  logger.error(error);
+  res.json(error);
+  
+}
 }
 
 module.exports = {

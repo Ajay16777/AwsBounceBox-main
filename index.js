@@ -5,6 +5,7 @@ const cors = require("cors");
 const ip = require("ip");
 const fileUpload = require("express-fileupload");
 const connectDB = require("./mongodb_connction");
+const logger = require("./logger");
 require("dotenv").config();
 
 const port = config.PORT || 8080;
@@ -19,8 +20,8 @@ app.use(express.urlencoded({ extended: true, limit: "10000" }));
 connectDB();
 
 app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-  console.log(`Server is running on ip ${ip.address()}`);
+  logger.info(`Server is running on port ${port}`);
+  logger.info(`Server is running on ip ${ip.address()}`);
 });
 
 //test connection
@@ -60,3 +61,17 @@ app.get("/", (req, res) => {
 app.use("/api/users", require("./routes/User"));
 app.use("/api/projects", require("./routes/Project"));
 app.use("/api/versions", require("./routes/Version"));
+
+
+//error handler middleware
+app.use((err, req, res, next) => {
+  logger.error(err.message, err);
+  res.status(500).send("Something went wrong");
+});
+
+//all logs are saved in combined.log file
+app.use((req, res, next) => {
+  logger.info(`${req.method} ${req.path}`);
+  next();
+}
+);
